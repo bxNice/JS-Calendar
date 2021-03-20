@@ -1,0 +1,251 @@
+html {
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  background-color: skyblue;
+  color: #fff;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+}
+#overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#sidebar {
+  margin-left: -250px;
+  min-width: 15vw;
+  max-width: 15vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: all 0.3s;
+  background: skyblue;
+}
+#sidebar * {
+  background: inherit;
+  color: inherit;
+}
+#sidebar.active {
+  margin-left: 0;
+}
+#sidebar .date-selector * {
+  font-size: calc(0.6rem + 1vw);
+}
+#sidebar .date-selector button {
+  background: transparent;
+  border: none;
+}
+#sidebar .date-selector .year-selector input {
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  /* hide num input arrows on firefox */
+  -moz-appearance: textfield;
+  /* hide the arrows from #year-selector input */
+  /* on Chrome, Safari, Edge, Opera */
+}
+#sidebar .date-selector .year-selector input::-webkit-outer-spin-button, #sidebar .date-selector .year-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#sidebar .date-selector .year-selector input:focus {
+  outline: none;
+}
+#sidebar .date-selector .month-selector {
+  display: block;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+#sidebar .date-selector .month-selector li {
+  width: 100%;
+}
+#sidebar .date-selector .month-selector li.active button {
+  font-weight: bold;
+}
+#sidebar .date-selector .month-selector-mobile {
+  display: none;
+}
+#sidebar .date-selector .month-selector-mobile select {
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  /* remove arrow from Firefox */
+  -moz-appearance: none;
+  /* remove arrow from Chrome */
+  -webkit-appearance: none;
+}
+#sidebar .date-selector .month-selector-mobile select::-ms-expand {
+  /* remove arrow from IE */
+  display: none;
+}
+#sidebar .date-selector .month-selector-mobile select:focus {
+  outline: none;
+}
+#sidebar .date-selector .month-selector-mobile option {
+  background-color: skyblue;
+}
+#sidebar .sidebar-footer {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  text-align: left;
+}
+#sidebar .sidebar-footer .lang-selector {
+  padding: 0;
+}
+#sidebar .sidebar-footer .lang-selector select {
+  width: 79%;
+  max-width: 150px;
+  border: none;
+}
+#sidebar .sidebar-footer .lang-selector select::-ms-expand {
+  /* remove arrow from IE */
+  display: none;
+}
+
+#mobile-navbar * {
+  color: inherit;
+  background-color: inherit;
+}
+#mobile-navbar #sidebar-collapse-btn {
+  padding: 10px;
+  border: none;
+  font-size: large;
+}
+
+#calendar {
+  padding: 0 5px 5px 5px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.3s;
+  height: 100%;
+}
+#calendar * {
+  color: inherit;
+}
+#calendar.active {
+  width: calc(100% - 15vw);
+}
+#calendar table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  height: 100%;
+  margin: 0;
+}
+#calendar #cal-header * {
+  font-size: calc(2px + 1vw);
+}
+#calendar #cal-header th.weekday {
+  border-left: none;
+  border-right: none;
+}
+#calendar #cal-header .mobile-text {
+  display: none;
+}
+#calendar #cal-header .default-text {
+  display: inline;
+}
+#calendar #cal-body * {
+  font-size: calc(10px + 0.7vw);
+}
+#calendar #cal-body td.day {
+  border: 1px solid white;
+  border-bottom: none;
+  vertical-align: top;
+  padding: 0;
+}
+#calendar #cal-body td.day.today {
+  text-decoration: underline;
+}
+#calendar #cal-body td.day.not-this-month {
+  color: #e3e3e3;
+}
+#calendar #cal-body td.day .date {
+  padding-left: 3px;
+}
+#calendar #cal-body tr.week td.day:nth-child(1) {
+  border-right: 1px solid white;
+  border-left: none;
+}
+#calendar #cal-body tr.week td.day:last-child {
+  border-left: 1px solid white;
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  #calendar #cal-header * {
+    font-size: calc(5px + 1vw);
+  }
+  #calendar #cal-header .mobile-text {
+    display: inline;
+  }
+  #calendar #cal-header .default-text {
+    display: none;
+  }
+}
+@media (max-width: 768px), (max-height: 426px) {
+  #calendar {
+    padding: 0 0 5px 0;
+    top: 47px;
+    height: calc(100% - 47px);
+  }
+
+  #sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+  #sidebar .date-selector * {
+    font-size: 2rem;
+  }
+  #sidebar .date-selector .month-selector {
+    display: none !important;
+  }
+  #sidebar .date-selector .month-selector-mobile {
+    display: block !important;
+  }
+  #sidebar .sidebar-footer .lang-selector * {
+    font-size: x-large;
+  }
+  #sidebar .sidebar-footer .lang-selector select {
+    width: 86%;
+    max-width: 86%;
+    padding-left: 5px;
+  }
+}
+@media (min-width: 1201px) and (min-height: 427px) {
+  #calendar.active {
+    width: calc(100% - 180px);
+  }
+
+  #sidebar {
+    min-width: 180px;
+    max-width: 180px;
+  }
+  #sidebar .date-selector * {
+    font-size: 1.6rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

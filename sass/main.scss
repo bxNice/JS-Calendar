@@ -1,0 +1,316 @@
+$bg-color: skyblue;
+$font-color: #fff;
+$greyed-font-color: #e3e3e3;
+
+$default-font-size: 12px;
+$font-stack: Verdana, Geneva, Tahoma, sans-serif;
+
+html {
+    font-size: $default-font-size;
+    font-family: $font-stack;
+}
+
+body {
+    background-color: $bg-color;
+    color: $font-color;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+
+    &.active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+#sidebar {
+    margin-left: -250px;
+    min-width: 15vw;
+    max-width: 15vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transition: all 0.3s;
+    background: $bg-color;
+
+    * {
+        background: inherit;
+        color: inherit;
+    }
+    &.active {
+        margin-left: 0;
+    }
+
+    .date-selector {
+        * {
+            font-size: calc(0.6rem + 1vw);
+        }
+
+        button {
+            background: transparent;
+            border: none;
+        }
+
+        .year-selector {
+            input {
+                width: 100%;
+                text-align: center;
+                background-color: transparent;
+                border: none;
+                /* hide num input arrows on firefox */
+                -moz-appearance: textfield;
+
+                /* hide the arrows from #year-selector input */
+                /* on Chrome, Safari, Edge, Opera */
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        .month-selector {
+            display: block;
+            background: transparent;
+            border: none;
+            text-align: left;
+
+            li {
+                width: 100%;
+
+                &.active {
+                    button {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .month-selector-mobile {
+            display: none;
+
+            select {
+                border: none;
+                background: transparent;
+                width: 100%;
+                text-align: center;
+                text-align-last: center;
+                -moz-text-align-last: center;
+
+                /* remove arrow from Firefox */
+                -moz-appearance: none;
+                /* remove arrow from Chrome */
+                -webkit-appearance: none;
+
+                &::-ms-expand {
+                    /* remove arrow from IE */
+                    display: none;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            option {
+                background-color: $bg-color;
+            }
+        }
+    }
+
+    .sidebar-footer {
+        width: 100%;
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        text-align: left;
+
+        .lang-selector {
+            padding: 0;
+
+            select {
+                width: 79%;
+                max-width: 150px;
+                border: none;
+
+                &::-ms-expand {
+                    /* remove arrow from IE */
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#mobile-navbar {
+    * {
+        color: inherit;
+        background-color: inherit;
+    }
+
+    #sidebar-collapse-btn {
+        padding: 10px;
+        border: none;
+        font-size: large;
+    }
+}
+
+#calendar {
+    padding: 0 5px 5px 5px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.3s;
+    height: 100%;
+
+    * {
+        color: inherit;
+    }
+    &.active {
+        width: calc(100% - 15vw);
+    }
+
+    table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        height: 100%;
+        margin: 0;
+    }
+
+    #cal-header {
+        * {
+            font-size: calc(2px + 1vw);
+        }
+
+        th.weekday {
+            border-left: none;
+            border-right: none;
+        }
+
+        .mobile-text {
+            display: none;
+        }
+        .default-text {
+            display: inline;
+        }
+    }
+    #cal-body {
+        * {
+            font-size: calc(10px + 0.7vw);
+        }
+
+        td.day {
+            border: 1px solid white;
+            border-bottom: none;
+            vertical-align: top;
+            padding: 0;
+
+            &.today {
+                text-decoration: underline;
+            }
+            &.not-this-month {
+                color: $greyed-font-color;
+            }
+
+            .date {
+                padding-left: 3px;
+            }
+        }
+
+        tr.week {
+            td.day:nth-child(1) {
+                border-right: 1px solid white;
+                border-left: none;
+            }
+
+            td.day:last-child {
+                border-left: 1px solid white;
+                border-right: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        #cal-header {
+            * {
+                font-size: calc(5px + 1vw);
+            }
+
+            .mobile-text {
+                display: inline;
+            }
+            .default-text {
+                display: none;
+            }
+        }
+    }
+}
+@media (max-width: 768px), (max-height: 426px) {
+    #calendar {
+        padding: 0 0 5px 0;
+        top: 47px;
+        height: calc(100% - 47px);
+    }
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        box-shadow: 3px 3px 3px rgb(0 0 0 / 20%);
+
+        .date-selector {
+            * {
+                font-size: 2rem;
+            }
+            .month-selector {
+                display: none !important;
+            }
+            .month-selector-mobile {
+                display: block !important;
+            }
+        }
+        .sidebar-footer {
+            .lang-selector {
+                * {
+                    font-size: x-large;
+                }
+
+                select {
+                    width: 86%;
+                    max-width: 86%;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1201px) and (min-height: 427px) {
+    #calendar {
+        &.active {
+            width: calc(100% - 180px);
+        }
+    }
+    #sidebar {
+        min-width: 180px;
+        max-width: 180px;
+
+        .date-selector {
+            * {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

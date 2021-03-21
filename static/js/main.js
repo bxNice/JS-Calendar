@@ -3,6 +3,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 /* NOTE: Whenever the term "weekday" is used here
          it is meant to include Saturdays and Sundays */
 
+// Media query to watch window size.
+var ResizeWatcher = window.matchMedia("(max-width: 768px), (max-height: 426px)");
+
 // Attempt to detect the user's preferred language
 // (including region), otherwise default to English.
 var DetectedLang = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en";
@@ -473,8 +476,8 @@ function CalYearSelector() {
     var selectedYear = dateState.userDate.getFullYear();
 
     changeYear = function changeYear(newYear) {
-        if (newYear > 9999 || newYear <= 0) {
-            newYear = newYear > 9999 ? 9999 : 1;
+        if (newYear > 9999 || newYear < 1000) {
+            newYear = newYear > 9999 ? 9999 : 1000;
         }
         var newDate = dateState.userDate;
         newDate.setFullYear(newYear);
@@ -501,7 +504,7 @@ function CalYearSelector() {
             React.createElement(
                 "div",
                 { className: "col-6 px-0 fs-4" },
-                React.createElement("input", { type: "number", value: selectedYear, onChange: function onChange(e) {
+                React.createElement("input", { type: "number", defaultValue: selectedYear, onChange: function onChange(e) {
                         return changeYear(e.target.value);
                     } })
             ),
@@ -705,12 +708,11 @@ function Calendar() {
 function Layout() {
     var mobileState = React.useContext(MobileContext);
 
-    // This may not be the best place to add this event listener
     React.useEffect(function () {
-        window.matchMedia("(max-width: 768px), (max-height: 426px)").addEventListener("change", function (e) {
+        ResizeWatcher.addEventListener("change", function (e) {
             mobileState.setMobile(e.matches);
         });
-    });
+    }, []);
 
     return React.createElement(
         React.Fragment,
@@ -795,7 +797,7 @@ var MobileContextProvider = function MobileContextProvider(props) {
         setMobileState(Object.assign({}, mobileState, { userMobile: isMobile }));
     };
     var initState = {
-        userMobile: window.matchMedia("(max-width: 768px), (max-height: 426px)").matches,
+        userMobile: ResizeWatcher.matches,
         setMobile: setMobile
     };
 
@@ -820,7 +822,7 @@ var DateContext = React.createContext({
     setDate: function setDate() {}
 });
 var MobileContext = React.createContext({
-    isMobile: window.matchMedia("(max-width: 768px), (max-height: 426px)").matches,
+    isMobile: ResizeWatcher.matches,
     setMobile: function setMobile() {}
 });
 

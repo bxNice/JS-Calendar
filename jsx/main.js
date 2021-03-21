@@ -2,6 +2,9 @@
          it is meant to include Saturdays and Sundays */
 
 
+// Media query to watch window size.
+const ResizeWatcher = window.matchMedia("(max-width: 768px), (max-height: 426px)");
+
 // Attempt to detect the user's preferred language
 // (including region), otherwise default to English.
 const DetectedLang = navigator.userLanguage
@@ -459,8 +462,8 @@ function CalYearSelector() {
     let selectedYear = dateState.userDate.getFullYear();
 
     changeYear = (newYear) => {
-        if (newYear > 9999 || newYear <= 0) {
-            newYear = (newYear > 9999) ? 9999 : 1;
+        if (newYear > 9999 || newYear < 1000) {
+            newYear = (newYear > 9999) ? 9999 : 1000;
         }
         let newDate = dateState.userDate;
         newDate.setFullYear(newYear);
@@ -474,7 +477,7 @@ function CalYearSelector() {
                     <button className="decrement-btn" onClick={() => changeYear(selectedYear - 1)}>{"<"}</button>
                 </div>
                 <div className="col-6 px-0 fs-4">
-                    <input type="number" value={selectedYear} onChange={(e) => changeYear(e.target.value)} />
+                    <input type="number" defaultValue={selectedYear} onChange={(e) => changeYear(e.target.value)} />
                 </div>
                 <div className="col text-center px-0 fs-4">
                     <button className="increment-btn" onClick={() => changeYear(selectedYear + 1)}>{">"}</button>
@@ -641,12 +644,11 @@ function Calendar() {
 function Layout() {
     const mobileState = React.useContext(MobileContext);
 
-    // This may not be the best place to add this event listener
     React.useEffect(() => {
-        window.matchMedia("(max-width: 768px), (max-height: 426px)").addEventListener("change", e => {
+        ResizeWatcher.addEventListener("change", e => {
             mobileState.setMobile(e.matches);
         });
-    });
+    }, []);
 
     return (
         <React.Fragment>
@@ -720,7 +722,7 @@ const MobileContextProvider = (props) => {
         setMobileState({ ...mobileState, userMobile: isMobile });
     }
     const initState = {
-        userMobile: window.matchMedia("(max-width: 768px), (max-height: 426px)").matches,
+        userMobile: ResizeWatcher.matches,
         setMobile: setMobile
     }
     const [mobileState, setMobileState] = React.useState(initState);
@@ -741,7 +743,7 @@ const DateContext = React.createContext({
     setDate: () => { }
 });
 const MobileContext = React.createContext({
-    isMobile: window.matchMedia("(max-width: 768px), (max-height: 426px)").matches,
+    isMobile: ResizeWatcher.matches,
     setMobile: () => { }
 });
 

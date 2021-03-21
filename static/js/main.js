@@ -208,11 +208,19 @@ function addDetectedLangOption() {
     if (supportedLanguages.filter(function (e) {
         return e.value === DetectedLang;
     }).length === 0) {
-        var languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
+        var languageText = void 0;
+        try {
+            var languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
+            languageText = languageNames.of(DetectedLang) + " (" + DetectedLang + ")";
+        } catch (e) {
+            console.log("Couldn't get localized name of detected language - browser does not support this feature.");
+            languageText = "Default " + DetectedLang;
+        }
+
         supportedLanguages.push({
             title: DetectedLang,
             value: DetectedLang,
-            text: languageNames.of(DetectedLang) + " (" + DetectedLang + ")"
+            text: languageText
         });
     }
 }

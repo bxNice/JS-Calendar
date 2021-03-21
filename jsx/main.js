@@ -252,7 +252,7 @@ function addDetectedLangOption() {
             let languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
             languageText = `${languageNames.of(DetectedLang)} (${DetectedLang})`;
         }
-        catch {
+        catch (e) {
             console.log("Couldn't get localized name of detected language - browser does not support this feature.");
             languageText = `Default ${DetectedLang}`;
         }

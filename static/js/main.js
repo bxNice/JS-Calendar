@@ -475,14 +475,31 @@ function CalYearSelector() {
     var dateState = React.useContext(DateContext);
     var selectedYear = dateState.userDate.getFullYear();
 
+    handleKeyPress = function handleKeyPress(event) {
+        if (["e", "E", "+", "-"].includes(event.key)) {
+            event.preventDefault();
+            return;
+        } else if ("Enter" == event.key) {
+            event.target.blur();
+            changeYear(event.target.value);
+            return;
+        }
+    };
+
     changeYear = function changeYear(newYear) {
         if (newYear > 9999 || newYear < 1000) {
-            newYear = newYear > 9999 ? 9999 : 1000;
+            console.log("Invalid year");
+            $(".year-selector input").val(selectedYear);
+            return;
         }
         var newDate = dateState.userDate;
         newDate.setFullYear(newYear);
         dateState.setDate(newDate);
     };
+
+    React.useEffect(function () {
+        $(".year-selector input").val(selectedYear);
+    });
 
     return React.createElement(
         "div",
@@ -504,8 +521,10 @@ function CalYearSelector() {
             React.createElement(
                 "div",
                 { className: "col-6 px-0 fs-4" },
-                React.createElement("input", { type: "number", defaultValue: selectedYear, onChange: function onChange(e) {
+                React.createElement("input", { type: "number", onBlur: function onBlur(e) {
                         return changeYear(e.target.value);
+                    }, onKeyDown: function onKeyDown(e) {
+                        return handleKeyPress(e);
                     } })
             ),
             React.createElement(

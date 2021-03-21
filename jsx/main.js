@@ -459,16 +459,33 @@ function CalMonthSelector() {
  */
 function CalYearSelector() {
     const dateState = React.useContext(DateContext);
-    let selectedYear = dateState.userDate.getFullYear();
+    const selectedYear = dateState.userDate.getFullYear();
+
+    handleKeyPress = (event) => {
+        if (["e", "E", "+", "-"].includes(event.key)) {
+            event.preventDefault();
+            return;
+        } else if ("Enter" == event.key) {
+            event.target.blur();
+            changeYear(event.target.value);
+            return;
+        }
+    }
 
     changeYear = (newYear) => {
         if (newYear > 9999 || newYear < 1000) {
-            newYear = (newYear > 9999) ? 9999 : 1000;
+            console.log("Invalid year");
+            $(".year-selector input").val(selectedYear)
+            return;
         }
         let newDate = dateState.userDate;
         newDate.setFullYear(newYear);
         dateState.setDate(newDate);
     }
+
+    React.useEffect(() => {
+        $(".year-selector input").val(selectedYear);
+    });
 
     return (
         <div className="container-fluid year-selector">
@@ -477,7 +494,7 @@ function CalYearSelector() {
                     <button className="decrement-btn" onClick={() => changeYear(selectedYear - 1)}>{"<"}</button>
                 </div>
                 <div className="col-6 px-0 fs-4">
-                    <input type="number" defaultValue={selectedYear} onChange={(e) => changeYear(e.target.value)} />
+                    <input type="number" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
                 </div>
                 <div className="col text-center px-0 fs-4">
                     <button className="increment-btn" onClick={() => changeYear(selectedYear + 1)}>{">"}</button>

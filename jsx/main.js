@@ -247,11 +247,20 @@ var supportedLanguages = [
  */
 function addDetectedLangOption() {
     if (supportedLanguages.filter(e => e.value === DetectedLang).length === 0) {
-        let languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
+        let languageText;
+        try {
+            let languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
+            languageText = `${languageNames.of(DetectedLang)} (${DetectedLang})`;
+        }
+        catch {
+            console.log("Couldn't get localized name of detected language - browser does not support this feature.");
+            languageText = `Default ${DetectedLang}`;
+        }
+
         supportedLanguages.push({
             title: DetectedLang,
             value: DetectedLang,
-            text: `${languageNames.of(DetectedLang)} (${DetectedLang})`,
+            text: languageText,
         });
     }
 }

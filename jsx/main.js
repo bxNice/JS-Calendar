@@ -456,7 +456,7 @@ function CalMonthSelector() {
  */
 function CalYearSelector() {
     const dateState = React.useContext(DateContext);
-    const selectedYear = dateState.userDate.getFullYear();
+    let selectedYear = dateState.userDate.getFullYear();
 
     changeYear = (newYear) => {
         if (newYear > 9999 || newYear <= 0) {

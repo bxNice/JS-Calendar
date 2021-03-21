@@ -665,6 +665,7 @@ function Layout() {
  * separating the context providers.
  */
 function App() {
+    console.log("test2");
     return (
         <MobileContextProvider>
             <DateContextProvider>
@@ -744,7 +745,7 @@ const MobileContext = React.createContext({
     setMobile: () => { }
 });
 
-
+console.log("test1");
 ReactDOM.render(
     <App />,
     document.getElementById("root")

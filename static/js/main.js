@@ -729,6 +729,7 @@ function Layout() {
  * separating the context providers.
  */
 function App() {
+    console.log("test2");
     return React.createElement(
         MobileContextProvider,
         null,
@@ -823,4 +824,5 @@ var MobileContext = React.createContext({
     setMobile: function setMobile() {}
 });
 
+console.log("test1");
 ReactDOM.render(React.createElement(App, null), document.getElementById("root"));

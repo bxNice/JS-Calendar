@@ -127,7 +127,8 @@ body {
   background-color: inherit;
 }
 #mobile-navbar #sidebar-collapse-btn {
-  padding: 10px;
+  padding: 5px;
+  margin-left: 5px;
   border: none;
   font-size: large;
 }
@@ -178,6 +179,9 @@ body {
 #calendar #cal-body td.day.today {
   text-decoration: underline;
 }
+#calendar #cal-body td.day.active {
+  outline: 1px solid darkslategray;
+}
 #calendar #cal-body td.day.not-this-month {
   color: #e3e3e3;
 }
@@ -207,8 +211,11 @@ body {
 @media (max-width: 768px), (max-height: 426px) {
   #calendar {
     padding: 0 0 5px 0;
-    top: 47px;
-    height: calc(100% - 47px);
+    top: 37px;
+    height: calc(100% - 37px);
+  }
+  #calendar #cal-header th.weekday {
+    padding: 3px;
   }
 
   #sidebar {

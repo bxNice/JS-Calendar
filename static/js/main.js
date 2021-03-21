@@ -573,6 +573,7 @@ function CalDay(props) {
     getClassName = function getClassName(isThisMonth, dateOnCal) {
         var className = isThisMonth ? "day this-month" : "day not-this-month";
         className += new Date().compare(dateOnCal) ? " today" : "";
+        className += dateOnCal.compare(dateState.userDate) ? " active" : "";
         return className;
     };
 

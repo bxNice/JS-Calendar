@@ -224,7 +224,7 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   }
   #sidebar .date-selector * {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   #sidebar .date-selector .month-selector {
     display: none !important;

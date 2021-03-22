@@ -567,7 +567,7 @@ function Sidebar() {
         null,
         React.createElement(
             "nav",
-            { id: "sidebar", className: mobileState.userMobile ? "" : "active" },
+            { id: "sidebar", className: mobileState.userMobile ? "active" : "active" },
             React.createElement(
                 "ul",
                 { className: "date-selector list-unstyled components" },

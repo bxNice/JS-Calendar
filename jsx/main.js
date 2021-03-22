@@ -527,7 +527,7 @@ function Sidebar() {
 
     return (
         <header>
-            <nav id="sidebar" className={mobileState.userMobile ? "" : "active"}>
+            <nav id="sidebar" className={mobileState.userMobile ? "active" : "active"}>
                 <ul className="date-selector list-unstyled components">
                     <li>
                         <CalYearSelector />

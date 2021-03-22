@@ -210,11 +210,12 @@ function addDetectedLangOption() {
     }).length === 0) {
         var languageText = void 0;
         try {
+            // Intl.DisplayNames is not supported on all browsers
             var languageNames = new Intl.DisplayNames(DetectedLang, { type: "language" });
             languageText = languageNames.of(DetectedLang) + " (" + DetectedLang + ")";
         } catch (e) {
             console.log("Couldn't get localized name of detected language - browser does not support this feature.");
-            languageText = "Default " + DetectedLang;
+            languageText = "Default (" + DetectedLang + ")";
         }
 
         supportedLanguages.push({

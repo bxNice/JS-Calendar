@@ -227,6 +227,10 @@ body {
   #sidebar .date-selector * {
     font-size: 3rem;
   }
+  #sidebar .date-selector button {
+    padding: 0 15px;
+    height: 100%;
+  }
   #sidebar .date-selector .month-selector {
     display: none !important;
   }

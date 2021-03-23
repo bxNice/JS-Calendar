@@ -138,8 +138,12 @@ body {
         text-align: left;
 
         .lang-selector {
+            background: transparent;
             padding: 0;
 
+            option {
+                background: $bg-color;
+            }
             select {
                 width: 79%;
                 max-width: 150px;

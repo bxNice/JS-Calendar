@@ -110,7 +110,11 @@ body {
   text-align: left;
 }
 #sidebar .sidebar-footer .lang-selector {
+  background: transparent;
   padding: 0;
+}
+#sidebar .sidebar-footer .lang-selector option {
+  background: skyblue;
 }
 #sidebar .sidebar-footer .lang-selector select {
   width: 79%;

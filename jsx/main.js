@@ -277,20 +277,23 @@ function toggleSidebar() {
 }
 
 /**
+ * @param {int} monthNum    the month from 0-11
  * @param {string} lang     the currently selected language
  * @param {boolean} short   abbreviates returned value if true
  * @returns {string}        the localized month name of the Date
  */
-Date.prototype.getMonthName = function getMonthName(lang, short = false) {
-    if (arguments.length < 1 || typeof lang !== "string" || typeof short != "boolean") {
-        throw "Invalid parameters given for Date.getMonthName(string, bool)";
+function getMonthName(monthNum, lang, short = false) {
+    if (arguments.length < 2 || typeof lang !== "string" || typeof short != "boolean" || typeof monthNum != "number") {
+        throw "Invalid parameters given for getMonthName(int, string, bool)";
     }
+    let tempDate = new Date(1, monthNum, 1);
     if (short) {
-        return this.toLocaleString(lang, { month: "short" });
+        return tempDate.toLocaleString(lang, { month: "short" });
     } else {
-        return this.toLocaleString(lang, { month: "long" });
+        return tempDate.toLocaleString(lang, { month: "long" });
     }
 }
+
 
 /**
  * @param {string} lang     the currently selected language
@@ -299,7 +302,7 @@ Date.prototype.getMonthName = function getMonthName(lang, short = false) {
  */
 Date.prototype.getWeekdayName = function getWeekdayName(lang, short = false) {
     if (arguments.length < 1 || typeof lang !== "string" || typeof short != "boolean") {
-        throw "Invalid parameters given for Date.getMonthName(string, bool)";
+        throw "Invalid parameters given for Date.getWeekdayName(string, bool)";
     }
     if (short) {
         return this.toLocaleString(lang, { weekday: "short" });
@@ -345,7 +348,7 @@ function MobileNavbar() {
         <nav id="mobile-navbar">
             <div className="container-fluid p-0">
                 <button type="button" id="sidebar-collapse-btn" onClick={toggleSidebar}>
-                    <i className="fas fa-bars"></i>&nbsp; <strong>{dateState.userDate.getFullYear()} {dateState.userDate.getMonthName(langState.userLang)}</strong>
+                    <i className="fas fa-bars"></i>&nbsp; <strong>{dateState.userDate.getFullYear()} {getMonthName(dateState.userDate.getMonth(), langState.userLang)}</strong>
                 </button>
             </div>
         </nav>
@@ -408,19 +411,17 @@ function CalMonthSelector() {
 
     getLocalizedMonthList = (selectedLang, isMobile) => {
         monthList = [];
-        let tempDate = new Date(0, 0, 1);
         for (let i = 0; i < 12; i++) {
-            tempDate.setMonth(i);
             if (isMobile) {
                 monthList.push(
                     <option value={i} key={`month-k-${i}`}>
-                        {tempDate.getMonthName(selectedLang, true)}
+                        {getMonthName(i, selectedLang, true)}
                     </option>
                 );
             } else {
                 monthList.push(
                     <li value={i} className={i === selectedMonth ? "active" : null} key={`month-k-${i}`}>
-                        <button onClick={() => changeMonth(i)}>{tempDate.getMonthName(selectedLang)}</button>
+                        <button onClick={() => changeMonth(i)}>{getMonthName(i, selectedLang)}</button>
                     </li>
                 );
             }
@@ -442,9 +443,12 @@ function CalMonthSelector() {
                         <button className="decrement-btn" onClick={() => changeMonth(selectedMonth - 1)}>{"<"}</button>
                     </div>
                     <div className="col-6 px-0">
-                        <select value={selectedMonth} onChange={e => changeMonth(e.target.value)}>
-                            {getLocalizedMonthList(langState.userLang, true)}
-                        </select >
+                        <div id="custom-selector">
+                            <span className="placeholder">{getMonthName(selectedMonth, langState.userLang, true)}</span>
+                            <select value={selectedMonth} onChange={e => changeMonth(e.target.value)}>
+                                {getLocalizedMonthList(langState.userLang, true)}
+                            </select >
+                        </div>
                     </div>
                     <div className="col text-center px-0">
                         <button className="increment-btn" onClick={() => changeMonth(selectedMonth + 1)}>{">"}</button>

@@ -236,22 +236,24 @@ function toggleSidebar() {
 }
 
 /**
+ * @param {int} monthNum    the month from 0-11
  * @param {string} lang     the currently selected language
  * @param {boolean} short   abbreviates returned value if true
  * @returns {string}        the localized month name of the Date
  */
-Date.prototype.getMonthName = function getMonthName(lang) {
-    var short = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+function getMonthName(monthNum, lang) {
+    var short = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    if (arguments.length < 1 || typeof lang !== "string" || typeof short != "boolean") {
-        throw "Invalid parameters given for Date.getMonthName(string, bool)";
+    if (arguments.length < 2 || typeof lang !== "string" || typeof short != "boolean" || typeof monthNum != "number") {
+        throw "Invalid parameters given for getMonthName(int, string, bool)";
     }
+    var tempDate = new Date(1, monthNum, 1);
     if (short) {
-        return this.toLocaleString(lang, { month: "short" });
+        return tempDate.toLocaleString(lang, { month: "short" });
     } else {
-        return this.toLocaleString(lang, { month: "long" });
+        return tempDate.toLocaleString(lang, { month: "long" });
     }
-};
+}
 
 /**
  * @param {string} lang     the currently selected language
@@ -262,7 +264,7 @@ Date.prototype.getWeekdayName = function getWeekdayName(lang) {
     var short = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     if (arguments.length < 1 || typeof lang !== "string" || typeof short != "boolean") {
-        throw "Invalid parameters given for Date.getMonthName(string, bool)";
+        throw "Invalid parameters given for Date.getWeekdayName(string, bool)";
     }
     if (short) {
         return this.toLocaleString(lang, { weekday: "short" });
@@ -315,7 +317,7 @@ function MobileNavbar() {
                     null,
                     dateState.userDate.getFullYear(),
                     " ",
-                    dateState.userDate.getMonthName(langState.userLang)
+                    getMonthName(dateState.userDate.getMonth(), langState.userLang)
                 )
             )
         )
@@ -384,15 +386,13 @@ function CalMonthSelector() {
 
     getLocalizedMonthList = function getLocalizedMonthList(selectedLang, isMobile) {
         monthList = [];
-        var tempDate = new Date(0, 0, 1);
 
         var _loop = function _loop(i) {
-            tempDate.setMonth(i);
             if (isMobile) {
                 monthList.push(React.createElement(
                     "option",
                     { value: i, key: "month-k-" + i },
-                    tempDate.getMonthName(selectedLang, true)
+                    getMonthName(i, selectedLang, true)
                 ));
             } else {
                 monthList.push(React.createElement(
@@ -403,7 +403,7 @@ function CalMonthSelector() {
                         { onClick: function onClick() {
                                 return changeMonth(i);
                             } },
-                        tempDate.getMonthName(selectedLang)
+                        getMonthName(i, selectedLang)
                     )
                 ));
             }
@@ -443,11 +443,20 @@ function CalMonthSelector() {
                     "div",
                     { className: "col-6 px-0" },
                     React.createElement(
-                        "select",
-                        { value: selectedMonth, onChange: function onChange(e) {
-                                return changeMonth(e.target.value);
-                            } },
-                        getLocalizedMonthList(langState.userLang, true)
+                        "div",
+                        { id: "custom-selector" },
+                        React.createElement(
+                            "span",
+                            { className: "placeholder" },
+                            getMonthName(selectedMonth, langState.userLang, true)
+                        ),
+                        React.createElement(
+                            "select",
+                            { value: selectedMonth, onChange: function onChange(e) {
+                                    return changeMonth(e.target.value);
+                                } },
+                            getLocalizedMonthList(langState.userLang, true)
+                        )
                     )
                 ),
                 React.createElement(

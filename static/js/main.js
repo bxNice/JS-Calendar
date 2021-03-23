@@ -443,20 +443,11 @@ function CalMonthSelector() {
                     "div",
                     { className: "col-6 px-0" },
                     React.createElement(
-                        "div",
-                        { id: "custom-selector" },
-                        React.createElement(
-                            "span",
-                            { className: "placeholder" },
-                            getMonthName(selectedMonth, langState.userLang, true)
-                        ),
-                        React.createElement(
-                            "select",
-                            { value: selectedMonth, onChange: function onChange(e) {
-                                    return changeMonth(e.target.value);
-                                } },
-                            getLocalizedMonthList(langState.userLang, true)
-                        )
+                        "select",
+                        { value: selectedMonth, onChange: function onChange(e) {
+                                return changeMonth(e.target.value);
+                            } },
+                        getLocalizedMonthList(langState.userLang, true)
                     )
                 ),
                 React.createElement(

@@ -443,12 +443,9 @@ function CalMonthSelector() {
                         <button className="decrement-btn" onClick={() => changeMonth(selectedMonth - 1)}>{"<"}</button>
                     </div>
                     <div className="col-6 px-0">
-                        <div id="custom-selector">
-                            <span className="placeholder">{getMonthName(selectedMonth, langState.userLang, true)}</span>
-                            <select value={selectedMonth} onChange={e => changeMonth(e.target.value)}>
-                                {getLocalizedMonthList(langState.userLang, true)}
-                            </select >
-                        </div>
+                        <select value={selectedMonth} onChange={e => changeMonth(e.target.value)}>
+                            {getLocalizedMonthList(langState.userLang, true)}
+                        </select >
                     </div>
                     <div className="col text-center px-0">
                         <button className="increment-btn" onClick={() => changeMonth(selectedMonth + 1)}>{">"}</button>

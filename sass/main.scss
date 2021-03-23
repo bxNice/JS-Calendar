@@ -102,21 +102,6 @@ body {
         .month-selector-mobile {
             display: none;
 
-            #custom-selector {
-                position: relative;
-            }
-
-            .placeholder {
-                z-index: 1;
-                background: skyblue;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-            }
-
             select {
                 z-index: 2;
                 position: relative;

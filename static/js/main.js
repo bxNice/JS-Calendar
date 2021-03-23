@@ -430,7 +430,7 @@ function CalMonthSelector() {
                 { className: "row" },
                 React.createElement(
                     "div",
-                    { className: "col text-center px-0 fs-4" },
+                    { className: "col text-center px-0" },
                     React.createElement(
                         "button",
                         { className: "decrement-btn", onClick: function onClick() {
@@ -441,7 +441,7 @@ function CalMonthSelector() {
                 ),
                 React.createElement(
                     "div",
-                    { className: "col-6 px-0 fs-4" },
+                    { className: "col-6 px-0" },
                     React.createElement(
                         "select",
                         { value: selectedMonth, onChange: function onChange(e) {
@@ -452,7 +452,7 @@ function CalMonthSelector() {
                 ),
                 React.createElement(
                     "div",
-                    { className: "col text-center px-0 fs-4" },
+                    { className: "col text-center px-0" },
                     React.createElement(
                         "button",
                         { className: "increment-btn", onClick: function onClick() {
@@ -518,7 +518,7 @@ function CalYearSelector() {
             { className: "row" },
             React.createElement(
                 "div",
-                { className: "col text-center px-0 fs-4" },
+                { className: "col text-center px-0" },
                 React.createElement(
                     "button",
                     { className: "decrement-btn", onClick: function onClick() {
@@ -529,7 +529,7 @@ function CalYearSelector() {
             ),
             React.createElement(
                 "div",
-                { className: "col-6 px-0 fs-4" },
+                { className: "col-6 px-0" },
                 React.createElement("input", { type: "number", onBlur: function onBlur(e) {
                         return changeYear(e.target.value);
                     }, onKeyDown: function onKeyDown(e) {
@@ -538,7 +538,7 @@ function CalYearSelector() {
             ),
             React.createElement(
                 "div",
-                { className: "col text-center px-0 fs-4" },
+                { className: "col text-center px-0" },
                 React.createElement(
                     "button",
                     { className: "increment-btn", onClick: function onClick() {

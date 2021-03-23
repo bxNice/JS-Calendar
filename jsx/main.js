@@ -438,15 +438,15 @@ function CalMonthSelector() {
         return (
             <div className="container-fluid month-selector-mobile">
                 <div className="row">
-                    <div className="col text-center px-0 fs-4">
+                    <div className="col text-center px-0">
                         <button className="decrement-btn" onClick={() => changeMonth(selectedMonth - 1)}>{"<"}</button>
                     </div>
-                    <div className="col-6 px-0 fs-4">
+                    <div className="col-6 px-0">
                         <select value={selectedMonth} onChange={e => changeMonth(e.target.value)}>
                             {getLocalizedMonthList(langState.userLang, true)}
                         </select >
                     </div>
-                    <div className="col text-center px-0 fs-4">
+                    <div className="col text-center px-0">
                         <button className="increment-btn" onClick={() => changeMonth(selectedMonth + 1)}>{">"}</button>
                     </div>
                 </div>
@@ -500,13 +500,13 @@ function CalYearSelector() {
     return (
         <div className="container-fluid year-selector">
             <div className="row">
-                <div className="col text-center px-0 fs-4">
+                <div className="col text-center px-0">
                     <button className="decrement-btn" onClick={() => changeYear(selectedYear - 1)}>{"<"}</button>
                 </div>
-                <div className="col-6 px-0 fs-4">
+                <div className="col-6 px-0">
                     <input type="number" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
                 </div>
-                <div className="col text-center px-0 fs-4">
+                <div className="col text-center px-0">
                     <button className="increment-btn" onClick={() => changeYear(selectedYear + 1)}>{">"}</button>
                 </div>
             </div>

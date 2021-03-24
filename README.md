@@ -26,7 +26,7 @@ The [CSS](static/css/main.css) is compiled from [SCSS](sass/main.scss).
 It's recommended to add the following folders to .gitignore:
 - /node_modules
 - /yourEnvHere
-- \__pycache__
+- \_\_pycache__
 
 ### Heroku
 The [Procfile](Procfile) and [runtime.txt](runtime.txt) files are used when deploying this app on Heroku. If you plan on using Heroku be sure to setup the app with Heroku's Python buildpack, as well as to edit [runtime.txt](runtime.txt) to reflect your installed version of Python.

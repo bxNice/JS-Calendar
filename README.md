@@ -1,6 +1,9 @@
 This is a (Gregorian) calendar web app built with React and using a Flask backend. It fits most screen sizes, devices, and browsers (Internet Explorer is currently unsupported) with the help of the Bootstrap CSS framework. It also features some support for different languages.
 
 
+This web app is currently deployed on Heroku at: https://btd-calendar.herokuapp.com/
+
+
 ## If you want to make changes...
 ### Python
 Python (available [here](https://www.python.org/downloads/)) is required to run the backend.

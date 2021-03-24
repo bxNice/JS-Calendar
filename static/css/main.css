@@ -8,14 +8,6 @@ body {
   color: #fff;
 }
 
-select.iOS {
-  -webkit-appearance: none !important;
-  background-color: skyblue !important;
-  background-image: url("images/iOS-select-arrow") !important;
-  background-position: right center !important;
-  background-repeat: no-repeat !important;
-}
-
 #overlay {
   display: none;
   position: fixed;
@@ -113,10 +105,6 @@ select.iOS {
   width: 79%;
   max-width: 150px;
   border: none;
-}
-#sidebar .sidebar-footer .lang-selector select::-ms-expand {
-  /* remove arrow from IE */
-  display: none;
 }
 #sidebar .sidebar-footer .lang-selector .lang-icon {
   margin-right: 10px;

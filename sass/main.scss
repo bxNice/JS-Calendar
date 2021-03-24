@@ -15,14 +15,6 @@ body {
     color: $font-color;
 }
 
-select.iOS {
-    -webkit-appearance: none !important;
-    background-color: skyblue !important;
-    background-image: url("images/iOS-select-arrow") !important;
-    background-position: right center !important;
-    background-repeat: no-repeat !important;
-}
-
 #overlay {
     display: none;
     position: fixed;
@@ -109,17 +101,12 @@ select.iOS {
         .month-selector-mobile {
             display: none;
             border: none;
-            // background: transparent;
             width: 95%;
             padding: 5px;
             margin-left: 5px;
 
             &:focus {
                 outline: none;
-            }
-
-            option {
-                // background-color: $bg-color;
             }
         }
     }
@@ -142,11 +129,6 @@ select.iOS {
                 width: 79%;
                 max-width: 150px;
                 border: none;
-
-                &::-ms-expand {
-                    /* remove arrow from IE */
-                    display: none;
-                }
             }
 
             .lang-icon {

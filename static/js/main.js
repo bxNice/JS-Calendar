@@ -493,7 +493,7 @@ function CalYearSelector() {
             React.createElement(
                 "div",
                 { className: "col-6 px-0" },
-                React.createElement("input", { type: "number", onBlur: function onBlur(e) {
+                React.createElement("input", { type: "number", pattern: "\\d*", onBlur: function onBlur(e) {
                         return changeYear(e.target.value);
                     }, onKeyDown: function onKeyDown(e) {
                         return handleKeyPress(e);

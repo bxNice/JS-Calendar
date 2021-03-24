@@ -488,7 +488,7 @@ function CalYearSelector() {
                     <button className="decrement-btn" onClick={() => changeYear(selectedYear - 1)}>{"<"}</button>
                 </div>
                 <div className="col-6 px-0">
-                    <input type="number" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
+                    <input type="number" pattern="\d*" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
                 </div>
                 <div className="col text-center px-0">
                     <button className="increment-btn" onClick={() => changeYear(selectedYear + 1)}>{">"}</button>

@@ -8,6 +8,14 @@ body {
   color: #fff;
 }
 
+select.iOS {
+  -webkit-appearance: none !important;
+  background-color: skyblue !important;
+  background-image: url("images/iOS-select-arrow") !important;
+  background-position: right center !important;
+  background-repeat: no-repeat !important;
+}
+
 #overlay {
   display: none;
   position: fixed;
@@ -170,7 +178,7 @@ body {
   padding: 0;
 }
 #calendar #cal-body td.day.today {
-  text-decoration: underline;
+  text-decoration: solid underline 3px;
 }
 #calendar #cal-body td.day.not-this-month {
   color: #e3e3e3;

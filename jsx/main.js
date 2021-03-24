@@ -1,7 +1,3 @@
-/* NOTE: Whenever the term "weekday" is used here
-         it is meant to include Saturdays and Sundays */
-
-
 // Media query to watch window size.
 const ResizeWatcher = window.matchMedia("(max-width: 768px), (max-height: 426px)");
 
@@ -267,6 +263,11 @@ function addDetectedLangOption() {
 }
 addDetectedLangOption();
 
+$(document).ready(function () {
+    if (navigator.userAgent.match('iPad|iPhone|iPod') !== null) {
+        $('select').addClass('iOS');
+    }
+});
 
 /**
  * Called when #sidebar-collapse-btn or #overlay is clicked.
@@ -683,7 +684,6 @@ function Layout() {
  * separating the context providers.
  */
 function App() {
-    console.log("test2");
     return (
         <MobileContextProvider>
             <DateContextProvider>
@@ -763,7 +763,6 @@ const MobileContext = React.createContext({
     setMobile: () => { }
 });
 
-console.log("test1");
 ReactDOM.render(
     <App />,
     document.getElementById("root")

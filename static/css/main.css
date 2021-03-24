@@ -119,7 +119,7 @@ select.iOS {
   display: none;
 }
 #sidebar .sidebar-footer .lang-selector .lang-icon {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #mobile-navbar * {
@@ -241,8 +241,8 @@ select.iOS {
     font-size: x-large;
   }
   #sidebar .sidebar-footer .lang-selector select {
-    width: 83%;
-    max-width: 83%;
+    width: 82%;
+    max-width: 82%;
   }
 }
 @media (min-width: 1201px) and (min-height: 427px) {

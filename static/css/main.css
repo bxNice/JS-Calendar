@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-color: skyblue;
+  background-color: cornflowerblue;
   color: #fff;
 }
 
@@ -32,7 +32,7 @@ body {
   left: 0;
   z-index: 9999;
   transition: all 0.3s;
-  background: skyblue;
+  background: cornflowerblue;
 }
 #sidebar * {
   background: inherit;
@@ -99,7 +99,7 @@ body {
   padding: 0;
 }
 #sidebar .sidebar-footer .lang-selector option {
-  background: skyblue;
+  background: cornflowerblue;
 }
 #sidebar .sidebar-footer .lang-selector select {
   width: 79%;
@@ -132,6 +132,7 @@ body {
 }
 #calendar * {
   color: inherit;
+  border: none;
 }
 #calendar.active {
   width: calc(100% - 15vw);
@@ -147,8 +148,6 @@ body {
 }
 #calendar #cal-header th.weekday {
   height: 1vw;
-  border-left: none;
-  border-right: none;
 }
 #calendar #cal-header .mobile-text {
   display: none;
@@ -157,11 +156,9 @@ body {
   display: inline;
 }
 #calendar #cal-body * {
-  font-size: calc(10px + 0.7vw);
+  font-size: calc(12px + 4vmin);
 }
 #calendar #cal-body td.day {
-  border: 1px solid white;
-  border-bottom: none;
   vertical-align: top;
   padding: 0;
 }
@@ -169,18 +166,12 @@ body {
   text-decoration: solid underline 3px;
 }
 #calendar #cal-body td.day.not-this-month {
-  color: #e3e3e3;
+  color: #ddd;
+  opacity: 50%;
 }
 #calendar #cal-body td.day .date {
   padding-left: 3px;
-}
-#calendar #cal-body tr.week td.day:nth-child(1) {
-  border-right: 1px solid white;
-  border-left: none;
-}
-#calendar #cal-body tr.week td.day:last-child {
-  border-left: 1px solid white;
-  border-right: none;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -224,7 +215,7 @@ body {
     border-bottom: 1px solid white;
   }
   #sidebar .sidebar-footer .lang-selector {
-    background: skyblue;
+    background: cornflowerblue;
   }
   #sidebar .sidebar-footer .lang-selector * {
     font-size: x-large;

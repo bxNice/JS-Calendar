@@ -1,6 +1,6 @@
-$bg-color: skyblue;
+$bg-color: cornflowerblue;
 $font-color: #fff;
-$greyed-font-color: #e3e3e3;
+$greyed-font-color: #ddd;
 
 $default-font-size: 12px;
 $font-stack: Verdana, Geneva, Tahoma, sans-serif;
@@ -163,6 +163,7 @@ body {
 
     * {
         color: inherit;
+        border: none;
     }
     &.active {
         width: calc(100% - 15vw);
@@ -182,8 +183,6 @@ body {
 
         th.weekday {
             height: 1vw;
-            border-left: none;
-            border-right: none;
         }
 
         .mobile-text {
@@ -195,12 +194,10 @@ body {
     }
     #cal-body {
         * {
-            font-size: calc(10px + 0.7vw);
+            font-size: calc(12px + 4vmin);
         }
 
         td.day {
-            border: 1px solid white;
-            border-bottom: none;
             vertical-align: top;
             padding: 0;
 
@@ -209,22 +206,12 @@ body {
             }
             &.not-this-month {
                 color: $greyed-font-color;
+                opacity: 50%;
             }
 
             .date {
                 padding-left: 3px;
-            }
-        }
-
-        tr.week {
-            td.day:nth-child(1) {
-                border-right: 1px solid white;
-                border-left: none;
-            }
-
-            td.day:last-child {
-                border-left: 1px solid white;
-                border-right: none;
+                text-align: center;
             }
         }
     }

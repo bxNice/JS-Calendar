@@ -68,7 +68,7 @@ body {
                 border: none;
                 /* hide num input arrows on firefox */
                 -moz-appearance: textfield;
-                /* hide the arrows from #year-selector input */
+                /* hide num input arrows */
                 /* on Chrome, Safari, Edge, Opera */
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {

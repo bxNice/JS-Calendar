@@ -79,26 +79,12 @@ body {
 }
 #sidebar .date-selector .month-selector-mobile {
   display: none;
-}
-#sidebar .date-selector .month-selector-mobile select {
-  z-index: 2;
-  position: relative;
   border: none;
   background: transparent;
-  width: 100%;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  /* remove arrow from Firefox */
-  -moz-appearance: none;
-  /* remove arrow from Chrome */
-  -webkit-appearance: none;
+  width: 95%;
+  padding: 5px;
 }
-#sidebar .date-selector .month-selector-mobile select::-ms-expand {
-  /* remove arrow from IE */
-  display: none;
-}
-#sidebar .date-selector .month-selector-mobile select:focus {
+#sidebar .date-selector .month-selector-mobile:focus {
   outline: none;
 }
 #sidebar .date-selector .month-selector-mobile option {
@@ -186,9 +172,6 @@ body {
 #calendar #cal-body td.day.today {
   text-decoration: underline;
 }
-#calendar #cal-body td.day.active {
-  outline: 1px solid darkslategray;
-}
 #calendar #cal-body td.day.not-this-month {
   color: #e3e3e3;
 }
@@ -231,7 +214,7 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   }
   #sidebar .date-selector * {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   #sidebar .date-selector button {
     padding: 0 15px;

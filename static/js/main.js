@@ -392,7 +392,7 @@ function CalMonthSelector() {
                 monthList.push(React.createElement(
                     "option",
                     { value: i, key: "month-k-" + i },
-                    getMonthName(i, selectedLang, true)
+                    getMonthName(i, selectedLang)
                 ));
             } else {
                 monthList.push(React.createElement(
@@ -423,45 +423,11 @@ function CalMonthSelector() {
 
     if (mobileState.userMobile) {
         return React.createElement(
-            "div",
-            { className: "container-fluid month-selector-mobile" },
-            React.createElement(
-                "div",
-                { className: "row" },
-                React.createElement(
-                    "div",
-                    { className: "col text-center px-0" },
-                    React.createElement(
-                        "button",
-                        { className: "decrement-btn", onClick: function onClick() {
-                                return changeMonth(selectedMonth - 1);
-                            } },
-                        "<"
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    { className: "col-6 px-0" },
-                    React.createElement(
-                        "select",
-                        { value: selectedMonth, onChange: function onChange(e) {
-                                return changeMonth(e.target.value);
-                            } },
-                        getLocalizedMonthList(langState.userLang, true)
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    { className: "col text-center px-0" },
-                    React.createElement(
-                        "button",
-                        { className: "increment-btn", onClick: function onClick() {
-                                return changeMonth(selectedMonth + 1);
-                            } },
-                        ">"
-                    )
-                )
-            )
+            "select",
+            { className: "month-selector-mobile", value: selectedMonth, onChange: function onChange(e) {
+                    return changeMonth(e.target.value);
+                } },
+            getLocalizedMonthList(langState.userLang, true)
         );
     }
     return React.createElement(

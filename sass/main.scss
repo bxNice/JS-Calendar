@@ -298,6 +298,8 @@ select.iOS {
         }
         .sidebar-footer {
             .lang-selector {
+                background: $bg-color;
+
                 * {
                     font-size: x-large;
                 }

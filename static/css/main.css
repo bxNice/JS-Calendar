@@ -234,6 +234,9 @@ select.iOS {
   #sidebar .date-selector .month-selector-mobile {
     display: block !important;
   }
+  #sidebar .sidebar-footer .lang-selector {
+    background: skyblue;
+  }
   #sidebar .sidebar-footer .lang-selector * {
     font-size: x-large;
   }

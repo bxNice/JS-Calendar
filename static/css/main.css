@@ -97,12 +97,13 @@ body {
 #sidebar .sidebar-footer .lang-selector {
   background: transparent;
   padding: 0;
+  font-size: 1.5rem;
 }
 #sidebar .sidebar-footer .lang-selector option {
   background: cornflowerblue;
 }
 #sidebar .sidebar-footer .lang-selector select {
-  width: 79%;
+  width: 65%;
   max-width: 150px;
   border: none;
 }

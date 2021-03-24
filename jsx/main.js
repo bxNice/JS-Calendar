@@ -456,12 +456,12 @@ function CalYearSelector() {
     const selectedYear = dateState.userDate.getFullYear();
 
     handleKeyPress = (event) => {
-        if (["e", "E", "+", "-"].includes(event.key)) {
-            event.preventDefault();
-            return;
-        } else if ("Enter" == event.key) {
+        if ("Enter" == event.key) {
             event.target.blur();
             changeYear(event.target.value);
+            return;
+        } else if (!(/\d/.test(event.key))) {
+            event.preventDefault();
             return;
         }
     }
@@ -488,7 +488,7 @@ function CalYearSelector() {
                     <button className="decrement-btn" onClick={() => changeYear(selectedYear - 1)}>{"<"}</button>
                 </div>
                 <div className="col-6 px-0">
-                    <input type="number" pattern="\d*" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
+                    <input type="text" onBlur={e => changeYear(e.target.value)} onKeyDown={e => handleKeyPress(e)} />
                 </div>
                 <div className="col text-center px-0">
                     <button className="increment-btn" onClick={() => changeYear(selectedYear + 1)}>{">"}</button>

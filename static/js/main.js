@@ -448,12 +448,12 @@ function CalYearSelector() {
     var selectedYear = dateState.userDate.getFullYear();
 
     handleKeyPress = function handleKeyPress(event) {
-        if (["e", "E", "+", "-"].includes(event.key)) {
-            event.preventDefault();
-            return;
-        } else if ("Enter" == event.key) {
+        if ("Enter" == event.key) {
             event.target.blur();
             changeYear(event.target.value);
+            return;
+        } else if (!/\d/.test(event.key)) {
+            event.preventDefault();
             return;
         }
     };
@@ -493,7 +493,7 @@ function CalYearSelector() {
             React.createElement(
                 "div",
                 { className: "col-6 px-0" },
-                React.createElement("input", { type: "number", pattern: "\\d*", onBlur: function onBlur(e) {
+                React.createElement("input", { type: "text", onBlur: function onBlur(e) {
                         return changeYear(e.target.value);
                     }, onKeyDown: function onKeyDown(e) {
                         return handleKeyPress(e);

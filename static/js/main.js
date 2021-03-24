@@ -224,12 +224,6 @@ function addDetectedLangOption() {
 }
 addDetectedLangOption();
 
-$(document).ready(function () {
-    if (navigator.userAgent.match('iPad|iPhone|iPod') !== null) {
-        $('select').addClass('iOS');
-    }
-});
-
 /**
  * Called when #sidebar-collapse-btn or #overlay is clicked.
  * Toggles #sidebar and #overlay from default to mobile styles.
@@ -360,7 +354,7 @@ function LangSelector() {
     return React.createElement(
         "div",
         { className: "container-fluid lang-selector" },
-        React.createElement("i", { className: "fas fa-language" }),
+        React.createElement("i", { className: "fas fa-language lang-icon" }),
         React.createElement(
             "select",
             { value: langState.userLang, onChange: function onChange(e) {

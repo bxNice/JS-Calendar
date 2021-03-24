@@ -263,12 +263,6 @@ function addDetectedLangOption() {
 }
 addDetectedLangOption();
 
-$(document).ready(function () {
-    if (navigator.userAgent.match('iPad|iPhone|iPod') !== null) {
-        $('select').addClass('iOS');
-    }
-});
-
 /**
  * Called when #sidebar-collapse-btn or #overlay is clicked.
  * Toggles #sidebar and #overlay from default to mobile styles.
@@ -386,7 +380,7 @@ function LangSelector() {
 
     return (
         <div className="container-fluid lang-selector">
-            <i className="fas fa-language" />
+            <i className="fas fa-language lang-icon" />
             <select value={langState.userLang} onChange={e => langState.setLang(e.target.value)}>
                 {getLanguageOptions()}
             </select>

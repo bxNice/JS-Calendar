@@ -88,15 +88,12 @@ select.iOS {
 #sidebar .date-selector .month-selector-mobile {
   display: none;
   border: none;
-  background: transparent;
   width: 95%;
   padding: 5px;
+  margin-left: 5px;
 }
 #sidebar .date-selector .month-selector-mobile:focus {
   outline: none;
-}
-#sidebar .date-selector .month-selector-mobile option {
-  background-color: skyblue;
 }
 #sidebar .sidebar-footer {
   width: 100%;
@@ -120,6 +117,9 @@ select.iOS {
 #sidebar .sidebar-footer .lang-selector select::-ms-expand {
   /* remove arrow from IE */
   display: none;
+}
+#sidebar .sidebar-footer .lang-selector .lang-icon {
+  margin-right: 5px;
 }
 
 #mobile-navbar * {
@@ -238,9 +238,8 @@ select.iOS {
     font-size: x-large;
   }
   #sidebar .sidebar-footer .lang-selector select {
-    width: 86%;
-    max-width: 86%;
-    padding-left: 5px;
+    width: 83%;
+    max-width: 83%;
   }
 }
 @media (min-width: 1201px) and (min-height: 427px) {

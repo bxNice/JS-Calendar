@@ -109,16 +109,17 @@ select.iOS {
         .month-selector-mobile {
             display: none;
             border: none;
-            background: transparent;
+            // background: transparent;
             width: 95%;
             padding: 5px;
+            margin-left: 5px;
 
             &:focus {
                 outline: none;
             }
 
             option {
-                background-color: $bg-color;
+                // background-color: $bg-color;
             }
         }
     }
@@ -146,6 +147,10 @@ select.iOS {
                     /* remove arrow from IE */
                     display: none;
                 }
+            }
+
+            .lang-icon {
+                margin-right: 5px;
             }
         }
     }
@@ -298,9 +303,8 @@ select.iOS {
                 }
 
                 select {
-                    width: 86%;
-                    max-width: 86%;
-                    padding-left: 5px;
+                    width: 83%;
+                    max-width: 83%;
                 }
             }
         }

@@ -2,7 +2,11 @@
 
 
 {% block head %}
-<title>Task and Weather Tracker</title>
+<title>JS-Calendar</title>
+
+<!-- Load the calendar stylesheet here.
+    Recommended to change the name of main.css
+    to be more specific if more pages are added -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
@@ -11,5 +15,8 @@
 <div id="root">
 </div>
 
+<!-- Load the JavaScript (React) here.
+    Recommended to change the name of main.js
+    to be more specific if more pages are added -->
 <script src="..\static\js\main.js"></script>
 {% endblock %}

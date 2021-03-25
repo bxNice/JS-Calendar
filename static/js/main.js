@@ -244,11 +244,11 @@ function getMonthName(monthNum, lang) {
     if (arguments.length < 2 || typeof lang !== "string" || typeof short != "boolean" || typeof monthNum != "number") {
         throw "Invalid parameters given for getMonthName(int, string, bool)";
     }
-    var tempDate = new Date(1, monthNum, 1);
+    var tempDate = new Date(1, monthNum, 3);
     if (short) {
-        return tempDate.toLocaleString(lang, { month: "short" });
+        return tempDate.toLocaleDateString(lang, { month: "short" });
     } else {
-        return tempDate.toLocaleString(lang, { month: "long" });
+        return tempDate.toLocaleDateString(lang, { month: "long" });
     }
 }
 
@@ -264,7 +264,7 @@ Date.prototype.getWeekdayName = function getWeekdayName(lang) {
         throw "Invalid parameters given for Date.getWeekdayName(string, bool)";
     }
     if (short) {
-        return this.toLocaleString(lang, { weekday: "short" });
+        return this.toLocaleString(lang, { weekday: "narrow" });
     } else {
         return this.toLocaleString(lang, { weekday: "long" });
     }

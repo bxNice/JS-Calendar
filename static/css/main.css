@@ -55,7 +55,7 @@ body {
   border: none;
   /* hide num input arrows on firefox */
   -moz-appearance: textfield;
-  /* hide the arrows from #year-selector input */
+  /* hide num input arrows */
   /* on Chrome, Safari, Edge, Opera */
 }
 #sidebar .date-selector .year-selector input::-webkit-outer-spin-button, #sidebar .date-selector .year-selector input::-webkit-inner-spin-button {
@@ -157,7 +157,7 @@ body {
   display: inline;
 }
 #calendar #cal-body * {
-  font-size: calc(12px + 4vmin);
+  font-size: calc(10px + 4vmin);
 }
 #calendar #cal-body td.day {
   vertical-align: top;

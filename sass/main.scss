@@ -51,16 +51,16 @@ body {
     }
 
     .date-selector {
-        * {
-            font-size: calc(0.6rem + 1vw);
-        }
-
         button {
             background: transparent;
             border: none;
         }
 
         .year-selector {
+            * {
+                font-size: calc(1rem + 1vw);
+            }
+
             input {
                 width: 100%;
                 text-align: center;
@@ -86,6 +86,10 @@ body {
             background: transparent;
             border: none;
             text-align: left;
+
+            * {
+                font-size: 2vw;
+            }
 
             li {
                 width: 100%;
@@ -253,7 +257,7 @@ body {
 
         .date-selector {
             * {
-                font-size: 2.5rem;
+                font-size: 2.5rem !important;
             }
             button {
                 padding: 0 15px;
@@ -295,7 +299,7 @@ body {
 
         .date-selector {
             * {
-                font-size: 1.6rem;
+                font-size: 2rem !important;
             }
         }
     }

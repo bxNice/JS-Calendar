@@ -41,12 +41,12 @@ body {
 #sidebar.active {
   margin-left: 0;
 }
-#sidebar .date-selector * {
-  font-size: calc(0.6rem + 1vw);
-}
 #sidebar .date-selector button {
   background: transparent;
   border: none;
+}
+#sidebar .date-selector .year-selector * {
+  font-size: calc(1rem + 1vw);
 }
 #sidebar .date-selector .year-selector input {
   width: 100%;
@@ -70,6 +70,9 @@ body {
   background: transparent;
   border: none;
   text-align: left;
+}
+#sidebar .date-selector .month-selector * {
+  font-size: 2vw;
 }
 #sidebar .date-selector .month-selector li {
   width: 100%;
@@ -202,7 +205,7 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   }
   #sidebar .date-selector * {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
   #sidebar .date-selector button {
     padding: 0 15px;
@@ -236,7 +239,7 @@ body {
     max-width: 180px;
   }
   #sidebar .date-selector * {
-    font-size: 1.6rem;
+    font-size: 2rem !important;
   }
 }
 
